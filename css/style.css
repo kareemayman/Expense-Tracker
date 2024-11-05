@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(238, 238, 238);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -1px;
+}
+
+.container {
+    width: 350px;
+}
+
+.container h1:first-child {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.container .balance h2, h1 {
+    margin: 0;
+}
+
+.container .balance h2 {
+    font-weight: 500;
+}
+
+.container .balance h1 {
+    letter-spacing: normal;
+}
+
+.income-expense {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    box-shadow: 0 0 6px 1px rgb(211, 211, 211);
+}
+
+.income-expense div {
+    text-align: center;
+}
+
+.income-expense h2 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.income-expense div h2:last-of-type {
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 5px;
+    letter-spacing: normal;
+}
+
+.income-expense span.border {
+    display: inline-block;
+    background-color:  #cfcfcf;
+    width: 1px;
+    height: 50px;
+    margin-inline: 50px;
+}
+
+.income-expense .income h2:last-of-type {
+    color: rgb(70, 206, 70);
+}
+
+.income-expense .expense h2:last-of-type {
+    color: rgb(192, 24, 24);
+}
