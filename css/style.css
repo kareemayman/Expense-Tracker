@@ -80,11 +80,12 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(192, 24, 24);
 }
 
-.history {
+.history, .add-transaction {
     width: 100%;
 }
 
-.history > span {
+.history > span,
+.add-transaction > span:first-of-type {
     display: block;
     height: 1px;
     width: 100%;
@@ -115,4 +116,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .history .entry.expense::after {
     background-color: rgb(192, 24, 24);
+}
+
+.add-transaction {
+    margin-top: 40px;
+}
+
+.add-transaction input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    margin: 8px 0; 
+    font-size: 18px;
+}
+
+.add-transaction span:last-of-type {
+    color: rgb(94, 94, 94);
+    font-size: 14px;
+}
+
+.add-transaction button {
+    color: white;
+    background-color: #9c88ff;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin: 8px 0;
+    font-size: 18px;
 }
