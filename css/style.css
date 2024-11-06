@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 20px 0 30px;
     box-shadow: 0 0 6px 1px rgb(211, 211, 211);
 }
 
@@ -78,4 +78,41 @@ h1, h2, h3, h4, h5, h6 {
 
 .income-expense .expense h2:last-of-type {
     color: rgb(192, 24, 24);
+}
+
+.history {
+    width: 100%;
+}
+
+.history > span {
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 10px 0 15px;
+    background-color: #b1b1b1;
+}
+
+.history .entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 6px 1px rgb(211, 211, 211);
+    margin: 15px 0;
+}
+
+.history .entry.income::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -5px;
+    height: 100%;
+    width: 5px;
+    background-color: rgb(70, 206, 70);
+}
+
+.history .entry.expense::after {
+    background-color: rgb(192, 24, 24);
 }
