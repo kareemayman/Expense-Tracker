@@ -59,8 +59,29 @@ form.addEventListener('submit', e => {
 entries.addEventListener('click', e => {
 
     // Check If Delete Button Was Pressed
-    if (e.target.matches('.entry .delete'))
-        console.log('delete button was clicked')
+    if (e.target.matches('.entry .delete')) {
+        // Selecting Parent Entry
+        const entry = e.target.closest('.entry')
+        const entryAmount = +entry.querySelector('.amount').textContent
+        
+        // Recalculate Balance
+        balance = (+balance - +entryAmount).toFixed(2)
+        balanceHTML.textContent = `$${balance}`
+
+        // Recalculate Income / Expense
+        if (entry.classList.contains('income')) {
+
+            income = (+income - +entryAmount).toFixed(2)
+            incomeHTML.textContent = `$${income}`
+        } else {
+
+            expense = (+expense + +entryAmount).toFixed(2)
+            expenseHTML.textContent = `$${expense}`
+        }
+
+        // Deleting The Entry
+        entry.remove()
+    }
 })
 
 function checkIfInputEmpty() {
