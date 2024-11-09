@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .container h1:first-child {
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .container .balance h2, h1 {
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .history > span,
-.add-transaction > span:first-of-type {
+.add-transaction span:first-of-type {
     display: block;
     height: 1px;
     width: 100%;
