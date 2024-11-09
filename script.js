@@ -3,8 +3,12 @@ const textInput = document.querySelector('input[id="text"]')
 const amountInput = document.querySelector('input[id="amount"]')
 const entries = document.querySelector('.history .entries')
 const balanceHTML = document.querySelector('.balance h1')
+const incomeHTML = document.querySelector('.income-expense .income h2:last-of-type')
+const expenseHTML = document.querySelector('.income-expense .expense h2:last-of-type')
 
 let balance = 0
+let income = 0
+let expense = 0
 
 
 // Event Listener For Clicking On Add Transaction Button
@@ -19,8 +23,20 @@ button.addEventListener('click', e => {
 
         // Create A New Entry
         let div = document.createElement('div')
-        if (amountInput.value >= 0) div.className = 'entry income'
-        else div.className = 'entry expense'
+        if (amountInput.value >= 0) {
+            div.className = 'entry income'
+
+            // Add Money To Income
+            income = (+income + +amountInput.value).toFixed(2)
+            incomeHTML.textContent = `$${income}`
+        }
+        else {
+            div.className = 'entry expense'
+
+            // Add Money To Expense
+            expense = (+expense + -amountInput.value).toFixed(2)
+            expenseHTML.textContent = `$${expense}`
+        }
         
         // Add Text, Amount To Entry
         div.innerHTML = `<span class="entry-name">${textInput.value}</span>
