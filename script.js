@@ -40,7 +40,8 @@ button.addEventListener('click', e => {
         
         // Add Text, Amount To Entry
         div.innerHTML = `<span class="entry-name">${textInput.value}</span>
-                    <span class="amount">${amountInput.value >= 0 ? `+${amountInput.value}` : amountInput.value}</span>`
+                    <span class="amount">${amountInput.value >= 0 ? `+${amountInput.value}` : amountInput.value}</span>
+                    <span class='delete'>X</span>`
 
         // Append Entry To Entries Div
         entries.append(div)
@@ -49,6 +50,14 @@ button.addEventListener('click', e => {
         amountInput.value = ""
         textInput.value = ""
     }
+})
+
+// Event For Clicking On Entries Delete Button
+entries.addEventListener('click', e => {
+
+    // Check If Delete Button Was Pressed
+    if (e.target.matches('.entry::before'))
+        console.log('delete button was clicked')
 })
 
 function checkIfInputEmpty() {

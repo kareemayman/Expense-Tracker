@@ -124,8 +124,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgb(192, 24, 24);
 }
 
-.history .entry::before {
-    content: "X";
+.history .entry .delete {
     position: absolute;
     left: -35px;
     top: 50%;
@@ -143,8 +142,12 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
 }
 
-.history .entry:hover::before {
+.history .entry:hover .delete {
     opacity: 1;
+}
+
+.history .entry .delete:hover {
+    background-color: rgb(161, 28, 28);
 }
 
 .add-transaction {
