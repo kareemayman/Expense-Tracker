@@ -14,9 +14,7 @@ button.addEventListener('click', e => {
     if(!checkIfInputEmpty()) {
 
         // Add To Balance
-        balance += +amountInput.value
-        balance = Number(balance).toFixed(2)
-        console.log(balance)
+        balance = (+balance + +amountInput.value).toFixed(2)
         balanceHTML.textContent = `$${balance}`
 
         // Create A New Entry
