@@ -1,4 +1,4 @@
-const button = document.querySelector('button')
+const form = document.querySelector('form')
 const textInput = document.querySelector('input[id="text"]')
 const amountInput = document.querySelector('input[id="amount"]')
 const entries = document.querySelector('.history .entries')
@@ -12,7 +12,10 @@ let expense = 0
 
 
 // Event Listener For Clicking On Add Transaction Button
-button.addEventListener('click', e => {
+form.addEventListener('submit', e => {
+
+    // Prevent Submit
+    e.preventDefault()
 
     // Check If Text Or Amount Inputs Empty
     if(!checkIfInputEmpty()) {
@@ -56,7 +59,7 @@ button.addEventListener('click', e => {
 entries.addEventListener('click', e => {
 
     // Check If Delete Button Was Pressed
-    if (e.target.matches('.entry::before'))
+    if (e.target.matches('.entry .delete'))
         console.log('delete button was clicked')
 })
 
