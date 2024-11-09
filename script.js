@@ -2,6 +2,7 @@ const button = document.querySelector('button')
 const textInput = document.querySelector('input[id="text"]')
 const amountInput = document.querySelector('input[id="amount"]')
 const entries = document.querySelector('.history .entries')
+const balanceHTML = document.querySelector('.balance h1')
 
 let balance = 0
 
@@ -13,12 +14,14 @@ button.addEventListener('click', e => {
     if(!checkIfInputEmpty()) {
 
         // Add To Balance
-        balance += amountInput.value
+        balance += +amountInput.value
         balance = Number(balance).toFixed(2)
+        console.log(balance)
+        balanceHTML.textContent = `$${balance}`
 
         // Create A New Entry
         let div = document.createElement('div')
-        if (balance >= 0) div.className = 'entry income'
+        if (amountInput.value >= 0) div.className = 'entry income'
         else div.className = 'entry expense'
         
         // Add Text, Amount To Entry
