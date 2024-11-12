@@ -56,6 +56,9 @@ form.addEventListener('submit', e => {
                     <span class="amount">${amountInput.value >= 0 ? `+${amountInput.value}` : amountInput.value}</span>
                     <span class='delete'>X</span>`
 
+        // Add ID
+        div.dataset.entryId = crypto.randomUUID()
+        
         // Append Entry To Entries Div
         entries.append(div)
 
@@ -63,6 +66,7 @@ form.addEventListener('submit', e => {
         let obj = new Object()
         obj.amount = amountInput.value
         obj.name = textInput.value
+        obj.id = div.dataset.entryId
 
         entriesInStorage.push(obj)
         localStorage.setItem('entries', JSON.stringify(entriesInStorage))
@@ -107,6 +111,24 @@ entries.addEventListener('click', e => {
             expenseHTML.textContent = `$${expense}`
         }
 
+        // Saving The New Balance, Income, & Expense In Local Storage
+        localStorage.setItem('balance', balance)
+        localStorage.setItem('income', income)
+        localStorage.setItem('expense', expense)
+
+        // Deleting Entry From Local Storage
+        let entryId = entry.dataset.entryId
+
+        console.log(entryId)
+
+        entriesInStorage = JSON.parse(localStorage.getItem('entries'))
+
+        let newEntries = entriesInStorage.filter(ent => {
+            return (ent.id != entryId)
+        })
+
+        localStorage.setItem('entries', JSON.stringify(newEntries))
+
         // Deleting The Entry
         entry.remove()
     }
@@ -138,6 +160,10 @@ function loadFromLocalStorage() {
         div.innerHTML = `<span class="entry-name">${entry.name}</span>
                     <span class="amount">${entry.amount >= 0 ? `+${entry.amount}` : entry.amount}</span>
                     <span class='delete'>X</span>`
+
+        // Add Id To Entry
+        div.dataset.entryId = entry.id
+
         // Append Entry To Entries Div
         entries.append(div)
     })
