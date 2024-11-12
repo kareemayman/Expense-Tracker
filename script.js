@@ -6,9 +6,14 @@ const balanceHTML = document.querySelector('.balance h1')
 const incomeHTML = document.querySelector('.income-expense .income h2:last-of-type')
 const expenseHTML = document.querySelector('.income-expense .expense h2:last-of-type')
 
-let balance = 0
-let income = 0
-let expense = 0
+// Get Items From Local Storage
+let balance = +localStorage.getItem('balance') || 0
+let income = +localStorage.getItem('income') || 0
+let expense = +localStorage.getItem('expense') || 0
+let entriesInStorage = JSON.parse(localStorage.getItem('entries')) || []
+
+// Display Items From Local Storage If Available
+
 
 
 // Event Listener For Clicking On Add Transaction Button
