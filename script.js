@@ -29,6 +29,11 @@ form.addEventListener('submit', e => {
         balance = (+balance + +amountInput.value).toFixed(2)
         balanceHTML.textContent = `$${balance}`
 
+
+
+
+
+
         // Create A New Entry
         let div = document.createElement('div')
         if (amountInput.value >= 0) {
@@ -54,9 +59,27 @@ form.addEventListener('submit', e => {
         // Append Entry To Entries Div
         entries.append(div)
 
+        // Saving The Entry In Local Storage
+        let obj = new Object()
+        obj.amount = amountInput.value
+        obj.name = textInput.value
+
+        entriesInStorage.push(obj)
+        localStorage.setItem('entries', JSON.stringify(entriesInStorage))
+
+
+
+
+
+
         // Clear Inputs
         amountInput.value = ""
         textInput.value = ""
+
+        // Saving New Balance, Income, Expense In Local Storage
+        localStorage.setItem('balance', balance)
+        localStorage.setItem('income', income)
+        localStorage.setItem('expense', expense)
     }
 })
 
@@ -97,15 +120,15 @@ function checkIfInputEmpty() {
     return false
 }
 
-// Function To Load Items From Local Storage
+// Function To Render Items From Local Storage
 function loadFromLocalStorage() {
-    balanceHTML.textContent = balance
-    incomeHTML.textContent = income
-    expenseHTML.textContent = expense
+    balanceHTML.textContent = balance.toFixed(2)
+    incomeHTML.textContent = income.toFixed(2)
+    expenseHTML.textContent = expense.toFixed(2)
 
     entriesInStorage.forEach(entry => {
         let div = document.createElement('div')
-        if (entry.amount >= 0) {
+        if (Number(entry.amount) >= 0) {
             div.className = 'entry income'
         }
         else {
