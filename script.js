@@ -13,7 +13,7 @@ let expense = +localStorage.getItem('expense') || 0
 let entriesInStorage = JSON.parse(localStorage.getItem('entries')) || []
 
 // Display Items From Local Storage If Available
-
+loadFromLocalStorage()
 
 
 // Event Listener For Clicking On Add Transaction Button
@@ -95,4 +95,27 @@ function checkIfInputEmpty() {
         return true
     }
     return false
+}
+
+// Function To Load Items From Local Storage
+function loadFromLocalStorage() {
+    balanceHTML.textContent = balance
+    incomeHTML.textContent = income
+    expenseHTML.textContent = expense
+
+    entriesInStorage.forEach(entry => {
+        let div = document.createElement('div')
+        if (entry.amount >= 0) {
+            div.className = 'entry income'
+        }
+        else {
+            div.className = 'entry expense'
+        }
+        // Add Text, Amount To Entry
+        div.innerHTML = `<span class="entry-name">${entry.name}</span>
+                    <span class="amount">${entry.amount >= 0 ? `+${entry.amount}` : entry.amount}</span>
+                    <span class='delete'>X</span>`
+        // Append Entry To Entries Div
+        entries.append(div)
+    })
 }
