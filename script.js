@@ -144,9 +144,9 @@ function checkIfInputEmpty() {
 
 // Function To Render Items From Local Storage
 function loadFromLocalStorage() {
-    balanceHTML.textContent = balance.toFixed(2)
-    incomeHTML.textContent = income.toFixed(2)
-    expenseHTML.textContent = expense.toFixed(2)
+    balanceHTML.textContent = `$${balance.toFixed(2)}`
+    incomeHTML.textContent = `$${income.toFixed(2)}`
+    expenseHTML.textContent = `$${expense.toFixed(2)}`
 
     entriesInStorage.forEach(entry => {
         let div = document.createElement('div')
